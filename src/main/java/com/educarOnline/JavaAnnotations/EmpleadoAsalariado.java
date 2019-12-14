@@ -63,7 +63,7 @@ public class EmpleadoAsalariado extends Empleado {
 	@Override
 	public void ingreso() {
 		
-		ingreso=getSalarioSemanal();
+		this.ingreso=salarioSemanal;
 
 	}
 	
