@@ -1,7 +1,15 @@
 package com.educarOnline.JavaAnnotations;
-
+/**
+ * Superclase abstracta Persona que proporciona lo métodos ingreso (método abstracto que cada subclase concreta debe 
+ * darle una implementación apropiada) y toString(heredado de la clase Object y sobreescrito en la clase Persona), 
+ * además de los métodos getters y setters que manipulan las variables de instancia de Persona.
+ * @author José Parra
+ *
+ */
 public abstract class Persona {
-
+	
+	// ...............................................................................................................
+	//VARIABLES DE INSTANCIA:
 	private String nombre;
 	private String apellido;
 	private String dni;
@@ -9,7 +17,7 @@ public abstract class Persona {
 	private int edad;
 
 	// ...............................................................................................................
-	//Constructor
+	//CONSRUCTOR (SOBRECARGA DE CONTRUCTORES)
 	public Persona(String nombre, String apellido, String dni, String genero, int edad) {
 		this.nombre = nombre;
 		this.apellido = apellido;
