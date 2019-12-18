@@ -1,89 +1,131 @@
 package com.educarOnline.JavaAnnotations;
+
 /**
- * Esta clase define objetos de tipo EstudianteBecaServicio.
+ * Subclase concreta que define objetos de tipo EstudianteBecaServicio.
+ * 
  * @author Jose Parra
  * @version 11/12/2019/A
- * @see <a href = "https://github.com/JoseGuillermoParraAponte" /> Cuenta de GitHub para ver proyectos personales </a>
+ * @see <a href = "https://github.com/JoseGuillermoParraAponte"> Cuenta de
+ *      GitHub para ver proyectos personales. </a>
  */
 
 public class EstudianteBecaServicio extends Estudiante {
-	
-	//.........................................................................................................
-	//Variables de instancia
 
-	private int tiempoServicio;
+	// .........................................................................................................
+	// VARIABLES DE INSTANCIA (ATRIBUTOS):
+
+	private double tiempoServicio;
 	private double ingreso;
-
 	private Informe informeBecaServicio;
-	//.........................................................................................................
-	//Constructores
+
+	// .........................................................................................................
+	// CONSRUCTORES (SOBRECARGA DE CONTRUCTORES):
 	/**
-	 * Constructor para las inicializaciones de las variables de instancias y del objecto de tipo Informe que se le inyectará a la clase.
-	 * @param nombre Nombre.
-	 * @param apellido Apellido.
-	 * @param dni Número de documento.
-	 * @param genero Género.
-	 * @param edad Edad
-	 * @param universidad Campus Universitario.
+	 * Constructor para las inicializaciones de las variables de instancias y del
+	 * objecto de tipo Informe que se le inyectará a la clase.
+	 * 
+	 * @param nombre               Nombre.
+	 * @param apellido             Apellido.
+	 * @param dni                  Número de documento.
+	 * @param genero               Género.
+	 * @param edad                 Edad
+	 * @param universidad          Campus Universitario.
 	 * @param carreraUniversitaria Carrera Universitaria.
-	 * @param tiempoServicio Tiempo de beca servicio.
-	 * @param informeBecaServicio Informe del estudiante.
+	 * @param tiempoServicio       Tiempo de beca servicio.
+	 * @param informeBecaServicio  Informe del estudiante.
 	 */
 	public EstudianteBecaServicio(String nombre, String apellido, String dni, String genero, int edad,
-			String universidad, String carreraUniversitaria, int tiempoServicio, Informe informeBecaServicio) {
+			String universidad, String carreraUniversitaria, double tiempoServicio, Informe informeBecaServicio) {
 
 		super(nombre, apellido, dni, genero, edad, universidad, carreraUniversitaria);
-		this.tiempoServicio = tiempoServicio;
+
+		try {
+			if (tiempoServicio < 0) {
+				throw new IllegalArgumentException("OJO: el tiempo de servicio debe ser > 0.0.");
+			} else {
+				this.tiempoServicio = tiempoServicio;
+			}
+
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
+
 		this.informeBecaServicio = informeBecaServicio;
 
 	}
+
 	/**
-	 * Constructor que será utilizado para inyectarle a la clase un objeto de tipo Informe.
+	 * Constructor que será utilizado para inyectarle a la clase
+	 * EstudianteBecaServicio un objeto de tipo Informe.
+	 * 
 	 * @param informeBecaServicio Informe del estudiante.
 	 */
 	public EstudianteBecaServicio(Informe informeBecaServicio) {
-
+		super();
 		this.informeBecaServicio = informeBecaServicio;
 	}
 
-	//.........................................................................................................
-	//Métdos setter y getter
+	/**
+	 * Constructor sin parámetros.
+	 */
+	public EstudianteBecaServicio() {
+		super();
+	}
+
+	// .........................................................................................................
+	// Métodos Getters y Setters
 	/**
 	 * Método que devuelve el tiempo de servicio del estudiante.
-	 * @return El tiempo de servicio.
+	 * 
+	 * @return Tiempo de beca servicio.
 	 */
-	public int getTiempoServicio() {
+	public double getTiempoServicio() {
 		return tiempoServicio;
 	}
+
 	/**
-	 * Método que especifica el tiempo de servicio del estudiante.
+	 * Método que establece el tiempo de servicio del estudiante.
+	 * 
 	 * @param tiempoServicio Tiempo de beca servicio.
 	 */
-	public void setTiempoServicio(int tiempoServicio) {
-		this.tiempoServicio = tiempoServicio;
+	public void setTiempoServicio(double tiempoServicio) {
+		try {
+			if (tiempoServicio < 0) {
+				throw new IllegalArgumentException("OJO: el tiempo de servicio debe ser > 0.0.");
+			} else {
+				this.tiempoServicio = tiempoServicio;
+			}
+
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
-	
+
 	/**
 	 * Devuelve el ingreso del estudiante.
+	 * 
 	 * @return Ingreso del estudiante.
 	 */
 	public double getIngreso() {
-		ingreso();
+		this.ingreso();
 		return ingreso;
 	}
+
 	/**
-	 * Método que genera el ingreso de un estudiante en función de su tiempo de servicio.
+	 * Método sobreescrito que establece el ingreso de un estudiante en función de
+	 * su tiempo de servicio.
 	 */
 	@Override
 	public void ingreso() {
 
-		if (tiempoServicio <= 1) {
-			ingreso = 10000;
+		if (this.getTiempoServicio() <= 1) {
+			this.ingreso = 10000;
 		} else {
-			ingreso = 10000 + 500 * (tiempoServicio - 1);
+			this.ingreso = 10000 + 500 * (this.getTiempoServicio() - 1);
 		}
 
 	}
+
 	/**
 	 * Método que devuelve las tareas del estudiante.
 	 */
@@ -92,6 +134,7 @@ public class EstudianteBecaServicio extends Estudiante {
 
 		return "Atender cuestiones referentes a su puesto de trabajo.";
 	}
+
 	/**
 	 * Método que devuelve el informe presentado por el estudiante.
 	 */
@@ -101,13 +144,15 @@ public class EstudianteBecaServicio extends Estudiante {
 		return informeBecaServicio.getInforme();
 	}
 
+	// ...............................................................................................................
 	/**
-	 * Método que devuelve toda la información del estudiante.
+	 * Devuelve la representación String de un objeto EstudianteBecaServicio..
 	 */
 	@Override
 	public String toString() {
-		return String.format("Datos de un estudiante Beca Servicio:%n"
-				+ "Nombre: %s%nApellido: %s%nIngreso: %.2f%nTareas: %s%nInforme: %s", getNombre(),getApellido(),getIngreso(),getTareas(),getInforme());
+		return String.format(
+				"Datos de un estudiante Beca Servicio:%n%sTiempo de Servicio: %.2f%nIngreso: %.2f%nTareas: %s%nInforme: %s",
+				super.toString(), getTiempoServicio(), getIngreso(), getTareas(), getInforme());
 
 	}
 }
