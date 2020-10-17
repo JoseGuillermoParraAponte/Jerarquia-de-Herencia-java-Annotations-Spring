@@ -1,8 +1,8 @@
 # Jerarquia-de-Herencia-java-Annotations-Spring
 
-##Proyecto: Jerarquía de herencia que contiene tipos de Persona que tiene algún tipo de ingreso.
+ Proyecto: Jerarquía de herencia que contiene tipos de Persona que tiene algún tipo de ingreso.
 
-        * Spring Framework Annotations.
+        # Spring Framework Annotations.
         * Clases abstractas.
         * Interfaces.
         * Herencia.
