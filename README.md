@@ -2,8 +2,8 @@
 
  Proyecto: Jerarquía de herencia que contiene tipos de Persona que tiene algún tipo de ingreso.
 
-        # Spring Framework Annotations.
-        * Clases abstractas.
+## Spring Framework Annotations.
+## Clases abstractas.
         * Interfaces.
         * Herencia.
         * Todo lo que implica la herencia.
